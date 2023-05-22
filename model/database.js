@@ -11,16 +11,16 @@ const con = mysql.createConnection({
   user: DB_USER || "root",
   password: DB_PASS,
   database: DB_NAME || "facebook",
-  multipleStatements: true
+  multipleStatements: true,
 });
 
-con.connect(function(err) {
+con.connect(function (err) {
   if (err) throw err;
   console.log("Connected!");
 
   let sql =
-    "DROP TABLE if exists students; CREATE TABLE students(id INT NOT NULL AUTO_INCREMENT, firstname VARCHAR(40) not null, lastname VARCHAR(40) not null, PRIMARY KEY (id));";
-  con.query(sql, function(err, result) {
+    "DROP TABLE if exists my_films; CREATE TABLE my_films(id INT NOT NULL AUTO_INCREMENT, film_name VARCHAR(75) not null, status VARCHAR(30), image_url VARCHAR (100) not null, imdb_film_id VARCHAR(30) not null, PRIMARY KEY (id));";
+  con.query(sql, function (err, result) {
     if (err) throw err;
     console.log("Table creation `students` was successful!");
 
