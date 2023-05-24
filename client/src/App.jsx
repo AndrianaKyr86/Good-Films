@@ -5,6 +5,7 @@ import NavBar from "./components/NavBar";
 function App() {
   let [movieDetails, setMovieDetails] = useState({});
   let [show, setShow] = useState(false);
+  let [toggle, setToggle] = useState(true); // toggle between users
 
   // saving backend
   let [myFilms, setMyFilms] = useState([
@@ -115,11 +116,9 @@ function App() {
             ) : null}
 
             {/* Here is the section where the watched films are displayed */}
-
-            <h5 className="watchedFilms">Watched Films</h5>
-
+            {/* <h5 className="watchedFilms">Watched Films</h5> */}
             {/* return my film db */}
-            {myFilms.map((myFilm) => {
+            {/* {myFilms.map((myFilm) => {
               return (
                 <div key={myFilm.id}>
                   <div className="card" style={{ width: "18rem" }}>
@@ -131,7 +130,35 @@ function App() {
                   </div>
                 </div>
               );
-            })}
+            })} */}
+
+            {/* Here we are placing the toggle button  */}
+            <div className="toggleButton">
+              {/* Here is the section where the watched films are displayed */}
+              {toggle ? (
+                <>
+                  <h5 className="watchedFilms">Watched Films</h5>
+                  {/* return my film db */}
+                  {myFilms.map((myFilm) => {
+                    return (
+                      <div key={myFilm.id}>
+                        <div className="card" style={{ width: "18rem" }}>
+                          <img
+                            src={
+                              "https://image.tmdb.org/t/p/w500" +
+                              myFilm.image_url
+                            }
+                            className="card-img-top"
+                            alt=""
+                          />
+                        </div>
+                      </div>
+                    );
+                  })}
+                </>
+              ) : null}
+            </div>
+            <button onClick={() => setToggle(!toggle)}>Toggle user</button>
           </div>
         </div>
       </div>
