@@ -9,7 +9,14 @@ function App() {
 
   // saving backend
   let [myFilms, setMyFilms] = useState([
-    { id: "", film_name: "", status: "", image_url: "", imdb_film_id: "" },
+    {
+      id: "",
+      film_name: "",
+      status: "",
+      image_url: "",
+      imdb_film_id: "",
+      favorite: "",
+    },
   ]);
 
   // fetching API
@@ -69,6 +76,33 @@ function App() {
       .catch((error) => {
         console.log(error);
       });
+  };
+
+  // I will need to create a function mark as favorite (add/remove from favorites) that will apply on the movies on the watchlist
+  // I have edit the database and added a column for favorite with a default value of null
+  // I will need to create a button that will change the value of the favorite column to true or false
+
+  const markAsFavorite = async (id) => {
+    console.log("favorite");
+    let options = {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        id: id,
+      }),
+    };
+    try {
+      let response = await fetch("/api", options);
+      if (response.ok) {
+        let movieData = await response.json(); // converts JSON to JavaScript for client/frontend
+        setMyFilms(movieData);
+      } else {
+        // server error
+        console.log(`Server error: ${response.status} ${response.statusText}`);
+      }
+    } catch (err) {
+      console.log(`Network error: ${err.message}`);
+    }
   };
 
   return (
@@ -151,6 +185,9 @@ function App() {
                             className="card-img-top"
                             alt=""
                           />
+                          <button className="favorite" onClick={markAsFavorite}>
+                            Favorite
+                          </button>
                         </div>
                       </div>
                     );
