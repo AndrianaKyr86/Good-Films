@@ -19,7 +19,7 @@ con.connect(function (err) {
   console.log("Connected!");
 
   let sql =
-    "DROP TABLE if exists my_films; CREATE TABLE my_films(id INT NOT NULL AUTO_INCREMENT, film_name VARCHAR(75) not null, status VARCHAR(30), image_url VARCHAR (100) not null, imdb_film_id VARCHAR(30) not null, favorite BOOLEAN, PRIMARY KEY (id));";
+    "DROP TABLE if exists my_films; CREATE TABLE my_films(id INT NOT NULL AUTO_INCREMENT, film_name VARCHAR(75) not null, status VARCHAR(30), image_url VARCHAR (100) not null, imdb_film_id VARCHAR(30) not null, favorite BOOLEAN DEFAULT false, PRIMARY KEY (id));";
   con.query(sql, function (err, result) {
     if (err) throw err;
     console.log("Table creation `films` was successful!");

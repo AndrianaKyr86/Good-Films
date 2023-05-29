@@ -89,10 +89,11 @@ function App() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         id: id,
+        favorite: true,
       }),
     };
     try {
-      let response = await fetch("/api", options);
+      let response = await fetch(`/api/${id}`, options);
       if (response.ok) {
         let movieData = await response.json(); // converts JSON to JavaScript for client/frontend
         setMyFilms(movieData);
@@ -185,7 +186,10 @@ function App() {
                             className="card-img-top"
                             alt=""
                           />
-                          <button className="favorite" onClick={markAsFavorite}>
+                          <button
+                            className="favorite"
+                            onClick={() => markAsFavorite(myFilm.id)}
+                          >
                             Favorite
                           </button>
                         </div>
