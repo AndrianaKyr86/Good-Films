@@ -2,11 +2,106 @@
   font-family: "Courier";
 }
 
+h5 {
+  font-family: "Courier";
+  font-size: 20px;
+  font-weight: bold;
+  background-color: aquamarine;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.resultCard {
+  background-color: aquamarine;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  /* I want to change the size of the image */
+  width: 500px;
+  position: relative;
+  object-fit: contain;
+}
+
+/* scrolling images */
+@import "https://unpkg.com/open-props";
+@import "https://unpkg.com/open-props/normalize.min.css";
+
+.media-scroller {
+  /* --_spacer: var(--size-3); */
+  --size: 150px;
+  display: grid;
+  /* gap: var(--_spacer); */
+  grid-auto-flow: column;
+  gap: calc(var(--gap) / 2);
+  margin: 0;
+  grid-auto-columns: 21%;
+
+  /* padding: 0 var(--_spacer) var(--_spacer); */
+
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+}
+
+/* .media-scroller--with-groups {
+  grid-auto-columns: 80%;
+}
+
+.media-group {
+  display: grid;
+  gap: var(--_spacer);
+  grid-auto-flow: column;
+} */
+
+.media-element {
+  display: grid;
+  grid-template-rows: min-content;
+  gap: var(--_spacer);
+  padding: var(--_spacer);
+  background: var(--surface-2);
+  border-radius: var(--radius-2);
+  box-shadow: var(--shadow-2);
+}
+
+.media-element > img {
+  inline-size: 200%;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+}
+
+.snaps-inline {
+  scroll-snap-type: inline mandatory;
+  scroll-padding-inline: var(--_spacer, 1rem);
+}
+
+.snaps-inline > * {
+  scroll-snap-align: start;
+}
+
+/* end of scrolling images */
+
+/* general styling */
+
+.container {
+  inline-size: min(100% - 4rem, 70rem);
+  margin-inline: auto;
+}
+
+/* end of general styling */
+
+.watchedFilms {
+  /* padding-top: 20px;
+  padding-bottom: 20px; */
+  padding-inline-start: var(--size-6);
+  margin-block: var(--size-9) var(--size-3);
+}
+
 .intro {
   margin-left: 20px;
   margin-right: 20px;
   margin-top: 20px;
   margin-top: 20px;
+  border-radius: 10px;
 
   background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9jyrRbIWChpR3fzaBHxk6KTS3F6z7wnHzbg&usqp=CAU");
   background-repeat: no-repeat;
@@ -14,13 +109,9 @@
   background-position: center;
   height: 50vh;
   width: 100%;
-
   display: box;
-
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
 }
+
 .margin {
   margin-left: 20px;
   margin-right: 20px;
@@ -30,11 +121,6 @@
 }
 
 .searchFilms {
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
-
-.watchedFilms {
   padding-top: 20px;
   padding-bottom: 20px;
 }
@@ -252,6 +338,16 @@
   .glowing-btn {
     font-size: 1em;
   }
+}
+
+/* End of my films button */
+
+/* This is to center the button my Films */
+.changeview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1em;
 }
 
 /* Favorites button css */

@@ -149,13 +149,13 @@ function App() {
             {show ? (
               <div className="col">
                 {/* card to display movie details after search */}
-                <div className="card" style={{ width: "25rem" }}>
+                <div className="resultCard">
                   <img
+                    className="card-img-top"
                     src={
                       "https://image.tmdb.org/t/p/w500" +
                       movieDetails.poster_path
                     }
-                    className="card-img-top"
                   />
                   <div className="card-body">
                     <h5 className="card-title">{movieDetails.title}</h5>
@@ -204,38 +204,52 @@ function App() {
               {/* Here is the section where the watched films are displayed */}
               {toggle ? (
                 <>
-                  <h5 className="watchedFilms">Watched Films</h5>
-                  {/* return my film db */}
-                  {myFilms.map((myFilm) => {
-                    return (
-                      <div key={myFilm.id}>
-                        <div className="card" style={{ width: "18rem" }}>
-                          <img
-                            src={
-                              "https://image.tmdb.org/t/p/w500" +
-                              myFilm.image_url
-                            }
-                            className="card-img-top"
-                            alt=""
-                          />
-                          <button
-                            className="btn-56"
-                            onClick={() => markAsFavorite(myFilm.id)}
-                          >
-                            Favorite
-                          </button>
+                  <div className="container">
+                    <h5 className="watchedFilms">Watched Films</h5>
+                    {/* return my film db */}
+                    {myFilms.map((myFilm) => {
+                      return (
+                        <div className="media-scroller snaps-inline">
+                          <div key={myFilm.id}>
+                            {/* <div className="media-scroller snaps-inline"> */}
+                            <div className="media-element">
+                              <img
+                                src={
+                                  "https://image.tmdb.org/t/p/w500" +
+                                  myFilm.image_url
+                                }
+                                alt=""
+                              />
+                            </div>
+                            {/* </div> */}
+
+                            <button
+                              className="btn-56"
+                              onClick={() => markAsFavorite(myFilm.id)}
+                            >
+                              Favorite
+                            </button>
+                          </div>
                         </div>
-                      </div>
-                    );
-                  })}
+                      );
+                    })}
+                  </div>
                 </>
               ) : null}
+
+              {/* on the otherwise null I can have an alternative text or image to show */}
             </div>
-            <button className="glowing-btn" onClick={() => setToggle(!toggle)}>
-              <span className="glowing-txt">
-                My <span className="faulty-letter"> F</span>ilms
-              </span>
-            </button>
+
+            <div className="changeview">
+              <button
+                className="glowing-btn"
+                onClick={() => setToggle(!toggle)}
+              >
+                <span className="glowing-txt">
+                  My <span className="faulty-letter"> F</span>ilms
+                </span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
