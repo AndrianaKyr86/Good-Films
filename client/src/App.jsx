@@ -199,7 +199,11 @@ function App() {
                 </>
               ) : null}
             </div>
-            <button onClick={() => setToggle(!toggle)}>Toggle user</button>
+            <button className="glowing-btn" onClick={() => setToggle(!toggle)}>
+              <span className="glowing-txt">
+                My <span className="faulty-letter"> F</span>ilms
+              </span>
+            </button>
           </div>
         </div>
       </div>

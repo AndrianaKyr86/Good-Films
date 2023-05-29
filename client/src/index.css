@@ -1,3 +1,8 @@
 body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: black;
   background-image: url(https://media.istockphoto.com/id/1263322369/vector/old-film-strip-vector-illustration-scalable-to-any-size.jpg?s=170667a&w=0&k=20&c=DjBGYO4DN7XiWx2SmJQ5B_oU7DRamiMilOaM78iZpNM=);
 }
