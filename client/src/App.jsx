@@ -110,6 +110,38 @@ function App() {
     <div className="margin">
       <div className="font">
         <NavBar handleButtonClick={getFilms} />
+        <div className="intro">
+          <h1>
+            Welcome to Good Films, the ultimate destination for movie
+            enthusiasts!
+          </h1>
+          <p>
+            With Good Films, you can now embark on an exciting cinematic journey
+            like never before. Just imagine a personalized space where you can
+            effortlessly keep track of all the movies you've watched and
+            cherished, all in one place.
+          </p>
+          <p>
+            Inspired by the renowned Good Reads, our platform brings you an
+            innovative way to curate your very own filmography. At the heart of
+            Good Films lies our powerful search bar, your gateway to discovering
+            and adding movies to your watch list. It's simple and intuitive to
+            use. All you need is your IMDb ID, a unique identifier for each
+            movie on IMDb. Enter your IMDb ID into the search bar, and voila!
+            Instantly, you'll unlock a treasure trove of films that you can add
+            to your watch list, ensuring you never miss a captivating cinematic
+            gem again.
+          </p>
+          <p>
+            Whether you're browsing through the filmographies of your favorite
+            actors, exploring the vast array of genres, or discovering hidden
+            cinematic gems, the search bar is your faithful companion on this
+            exhilarating cinematic adventure. So go ahead, enter your IMDb ID,
+            and let Good Films revolutionize the way you experience and cherish
+            movies. Your film journey awaits, ready to be captured and
+            celebrated. Welcome to Good Films, where movies come alive!
+          </p>
+        </div>
 
         {/* This is where the featured movie is displayed after inserting the id in the search on navbar and fetched from api */}
         <div className="container text-center">
@@ -187,7 +219,7 @@ function App() {
                             alt=""
                           />
                           <button
-                            className="favorite"
+                            className="btn-56"
                             onClick={() => markAsFavorite(myFilm.id)}
                           >
                             Favorite
