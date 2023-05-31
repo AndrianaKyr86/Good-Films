@@ -6,6 +6,7 @@ function App() {
   let [movieDetails, setMovieDetails] = useState({});
   let [show, setShow] = useState(false);
   let [toggle, setToggle] = useState(true); // toggle between users
+  let [favorite, setFavorite] = useState(false); // toggle between favorite and not favorite
 
   // saving backend
   let [myFilms, setMyFilms] = useState([
@@ -83,7 +84,7 @@ function App() {
   // I will need to create a button that will change the value of the favorite column to true or false
 
   const markAsFavorite = async (id) => {
-    console.log("favorite");
+    console.log("favorite " + id);
     let options = {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -96,7 +97,19 @@ function App() {
       let response = await fetch(`/api/${id}`, options);
       if (response.ok) {
         let movieData = await response.json(); // converts JSON to JavaScript for client/frontend
-        setMyFilms(movieData);
+        // setMyFilms(movieData);
+        // mapping over the previous films using prevFilms.map, we find the film with the
+        //matching IMDb ID (film.imdb_film_id === id). If found, we create a new film object using the
+        //spread syntax ({ ...film }) and update its favorite property by negating the previous value (!film.favorite).
+        //This way, each time the button is clicked, the favorite status will toggle, and the image will be updated accordingly.
+        // With this update, clicking the button again should revert the image to its original state.
+        setMyFilms((prevFilms) =>
+          prevFilms.map((film) =>
+            film.imdb_film_id === id
+              ? { ...film, favorite: !film.favorite }
+              : film
+          )
+        );
       } else {
         // server error
         console.log(`Server error: ${response.status} ${response.statusText}`);
@@ -209,27 +222,39 @@ function App() {
                     {/* return my film db */}
                     {myFilms.map((myFilm) => {
                       return (
-                        <div className="media-scroller snaps-inline">
-                          <div key={myFilm.id}>
-                            {/* <div className="media-scroller snaps-inline"> */}
-                            <div className="media-element">
-                              <img
-                                src={
-                                  "https://image.tmdb.org/t/p/w500" +
-                                  myFilm.image_url
-                                }
-                                alt=""
-                              />
-                            </div>
-                            {/* </div> */}
-
-                            <button
-                              className="btn-56"
-                              onClick={() => markAsFavorite(myFilm.id)}
-                            >
-                              Favorite
-                            </button>
+                        // <div className="media-scroller snaps-inline">
+                        <div key={myFilm.id}>
+                          {/* <div className="media-scroller snaps-inline"> */}
+                          <div className="media-element">
+                            <img
+                              src={
+                                "https://image.tmdb.org/t/p/w500" +
+                                myFilm.image_url
+                              }
+                              alt=""
+                            />
                           </div>
+                          {/* </div> */}
+
+                          <button
+                            className="btn-56"
+                            onClick={() => markAsFavorite(myFilm.imdb_film_id)}
+                          >
+                            {myFilm.favorite ? (
+                              <img
+                                src={`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkvLX4Jb3rmOuc6fGBpcloC_ZqhzAWzOHTVw&usqp=CAU`}
+                                alt="heart"
+                                className="fullHeart"
+                              />
+                            ) : (
+                              <img
+                                src={`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnJOenO0JjV_hKA8tT3cGhSe0lhRcyygsY3w&usqp=CAU`}
+                                alt="heart"
+                                className="emptyHeart"
+                              />
+                            )}
+                            Favorite
+                          </button>
                         </div>
                       );
                     })}
