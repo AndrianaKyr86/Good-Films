@@ -222,21 +222,21 @@ function App() {
                                 markAsFavorite(myFilm.imdb_film_id)
                               }
                             >
-                              {myFilm.favorite ? (
-                                <img
-                                  src={`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkvLX4Jb3rmOuc6fGBpcloC_ZqhzAWzOHTVw&usqp=CAU`}
-                                  alt="heart"
-                                  className="fullHeart"
-                                />
-                              ) : (
-                                <img
-                                  src={`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnJOenO0JjV_hKA8tT3cGhSe0lhRcyygsY3w&usqp=CAU`}
-                                  alt="heart"
-                                  className="emptyHeart"
-                                />
-                              )}
                               Favorite
                             </button>
+                            {myFilm.favorite ? (
+                              <img
+                                src={`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2DP8Ck0Rk59T_Nlk4DqsMXq_iBqFNdsSLoQ&usqp=CAU`}
+                                alt="heart"
+                                className="heart"
+                              />
+                            ) : (
+                              <img
+                                src={`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8_8soztNtn1NhtumM6T8urzEE_eCzp6zH9Q&usqp=CAU`}
+                                alt="heart"
+                                className="heart"
+                              />
+                            )}
                           </div>
                         );
                       })}
