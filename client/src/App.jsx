@@ -195,23 +195,6 @@ function App() {
               </div>
             ) : null}
 
-            {/* Here is the section where the watched films are displayed */}
-            {/* <h5 className="watchedFilms">Watched Films</h5> */}
-            {/* return my film db */}
-            {/* {myFilms.map((myFilm) => {
-              return (
-                <div key={myFilm.id}>
-                  <div className="card" style={{ width: "18rem" }}>
-                    <img
-                      src={"https://image.tmdb.org/t/p/w500" + myFilm.image_url}
-                      className="card-img-top"
-                      alt=""
-                    />
-                  </div>
-                </div>
-              );
-            })} */}
-
             {/* Here we are placing the toggle button  */}
             <div className="toggleButton">
               {/* Here is the section where the watched films are displayed */}
@@ -220,12 +203,11 @@ function App() {
                   <div className="container">
                     <h5 className="watchedFilms">Watched Films</h5>
                     {/* return my film db */}
-                    {myFilms.map((myFilm) => {
-                      return (
-                        // <div className="media-scroller snaps-inline">
-                        <div key={myFilm.id}>
-                          {/* <div className="media-scroller snaps-inline"> */}
-                          <div className="media-element">
+                    <div className="media-scroller">
+                      {myFilms.map((myFilm) => {
+                        return (
+                          // <div className="media-scroller">
+                          <div key={myFilm.id} className="media-element">
                             <img
                               src={
                                 "https://image.tmdb.org/t/p/w500" +
@@ -233,31 +215,32 @@ function App() {
                               }
                               alt=""
                             />
-                          </div>
-                          {/* </div> */}
 
-                          <button
-                            className="btn-56"
-                            onClick={() => markAsFavorite(myFilm.imdb_film_id)}
-                          >
-                            {myFilm.favorite ? (
-                              <img
-                                src={`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkvLX4Jb3rmOuc6fGBpcloC_ZqhzAWzOHTVw&usqp=CAU`}
-                                alt="heart"
-                                className="fullHeart"
-                              />
-                            ) : (
-                              <img
-                                src={`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnJOenO0JjV_hKA8tT3cGhSe0lhRcyygsY3w&usqp=CAU`}
-                                alt="heart"
-                                className="emptyHeart"
-                              />
-                            )}
-                            Favorite
-                          </button>
-                        </div>
-                      );
-                    })}
+                            <button
+                              className="btn-56"
+                              onClick={() =>
+                                markAsFavorite(myFilm.imdb_film_id)
+                              }
+                            >
+                              {myFilm.favorite ? (
+                                <img
+                                  src={`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkvLX4Jb3rmOuc6fGBpcloC_ZqhzAWzOHTVw&usqp=CAU`}
+                                  alt="heart"
+                                  className="fullHeart"
+                                />
+                              ) : (
+                                <img
+                                  src={`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnJOenO0JjV_hKA8tT3cGhSe0lhRcyygsY3w&usqp=CAU`}
+                                  alt="heart"
+                                  className="emptyHeart"
+                                />
+                              )}
+                              Favorite
+                            </button>
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
                 </>
               ) : null}
