@@ -174,8 +174,8 @@ p {
 /* This is the css for the images for mark as favorite
 but I am unable to change the sizing */
 
-.heart {
-  width: 50px;
+img.heart {
+  width: 100px;
   height: auto;
   object-fit: contain;
   position: relative;
